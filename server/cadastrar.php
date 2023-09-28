@@ -44,7 +44,7 @@ $upar = move_uploaded_file($img["tmp_name"], $path);
         echo "
         <script>
            alert('Foto upada');
-           location.href='index.php';
+           location.href='../index.php';
         </script>";
     }
 }
