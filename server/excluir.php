@@ -12,7 +12,7 @@ $file = $dados['foto'];
 $query = "DELETE FROM usuario WHERE id_usuario=$id";
 $executar = mysqli_query($conexao, $query);
 
-$path = "./img/" . $file;
+$path = "img/" . $file;
 $delete = unlink($path);
 
 if ($delete and $executar) {
