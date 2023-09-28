@@ -14,7 +14,8 @@ $executar = mysqli_query($conexao, $query);
 
 $temp_atual = sys_get_temp_dir();
 $path = $temp_atual . "/" . $file;
-$delete = unlink($path);
+$delete = true;
+// unlink($path);
 
 if ($delete and $executar) {
         echo "
