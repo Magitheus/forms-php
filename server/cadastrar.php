@@ -31,11 +31,9 @@ if ($img["error"] == 4) {
 } else {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
-
     $dir_atual = __DIR__;
-
-    // Caminho para salvar o arquivo no diretório atual
     $path = $dir_atual . "/" . $nameFile;
+    $upar = move_uploaded_file($img["tmp_name"], $path);
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
     
