@@ -20,13 +20,13 @@ if ($img["error"] == 4) {
     echo "
         <script>
            alert('Por favor envie uma foto erro 4');
-           location.href='cadastro.php';
+           location.href='index.php';
         </script>";
 } else if (!preg_match($regex, $name)) {
     echo "
     <script>
        alert('Por favor envie uma foto erro no ext');
-       location.href='cadastro.php';
+       location.href='index.php';
     </script>";
 } else {
     $ext = explode(".", $img["name"]);
@@ -34,7 +34,7 @@ if ($img["error"] == 4) {
     $temp_atual = sys_get_temp_dir();
     $path = $temp_atual . "/" . $nameFile;
 
-$upar = move_uploaded_file($img["tmp_name"], $path);
+    $upar = move_uploaded_file($img["tmp_name"], $path);
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
     
@@ -42,8 +42,8 @@ $upar = move_uploaded_file($img["tmp_name"], $path);
     if ($upar && $resultado) {
         echo "
         <script>
-           alert('Foto upada');
-           location.href='cadastro.php';
+           alert('Foto upada caminho: ' . $path . ');
+           location.href='index.php';
         </script>";
     }
 }
