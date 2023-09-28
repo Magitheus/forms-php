@@ -32,7 +32,7 @@ if ($img["error"] == 4) {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
 
-    $path = "/app/img/" . $nameFile;
+    $path = "./img/" . $nameFile;
     $upar = move_uploaded_file($img["tmp_name"], $path);
 
    
