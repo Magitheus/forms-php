@@ -31,7 +31,9 @@ if ($img["error"] == 4) {
 } else {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
-    $path = "../img/" . $nameFile;
+
+    $raiz_projeto = __DIR__; // Obtém o diretório atual do script PHP (raiz do projeto)
+    $path = $raiz_projeto . "/img/" . $nameFile;
     $upar = move_uploaded_file($img["tmp_name"], $path);
 
    
