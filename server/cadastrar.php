@@ -30,28 +30,44 @@ if ($img["error"] == 4) {
     </script>";
 } else {
     $ext = explode(".", $img["name"]);
-    $nameFile = md5(uniqid(time())) . "." . $ext[1];
+$nameFile = md5(uniqid(time())) . "." . $ext[1];
 
-    $temp_dir = "/app/temp/";
+// Diretório temporário dentro do diretório atual do script
+$temp_dir = __DIR__ . "/temp/";
 
-    $temp_path = $temp_dir . $nameFile;
-
-    if (move_uploaded_file($img["tmp_name"], $temp_path)) {
-        // Arquivo movido para o diretório temporário com sucesso
-
-        // Agora, mova o arquivo para o diretório final
-        $final_dir = "/app/server/img/";
-        $final_path = $final_dir . $nameFile;
-
-        if (rename($temp_path, $final_path)) {
-            // Arquivo movido para o diretório final com sucesso
-            echo "O arquivo foi carregado e movido com sucesso para $final_path.";
-        } else {
-            echo "Falha ao mover o arquivo para o diretório final.";
-        }
-    } else {
-        echo "Falha ao carregar/mover o arquivo para o diretório temporário.";
+// Garanta que o diretório temporário exista ou crie-o
+if (!is_dir($temp_dir)) {
+    if (!mkdir($temp_dir, 0777, true)) {
+        die("Falha ao criar o diretório temporário.");
     }
+}
+
+$temp_path = $temp_dir . $nameFile;
+
+if (move_uploaded_file($img["tmp_name"], $temp_path)) {
+    // Arquivo movido para o diretório temporário com sucesso
+
+    // Diretório final de destino
+    $final_dir = __DIR__ . "/server/img/";
+
+    // Garanta que o diretório final exista ou crie-o
+    if (!is_dir($final_dir)) {
+        if (!mkdir($final_dir, 0777, true)) {
+            die("Falha ao criar o diretório final de destino.");
+        }
+    }
+
+    $final_path = $final_dir . $nameFile;
+
+    if (rename($temp_path, $final_path)) {
+        // Arquivo movido para o diretório final com sucesso
+        echo "O arquivo foi carregado e movido com sucesso para $final_path.";
+    } else {
+        echo "Falha ao mover o arquivo para o diretório final.";
+    }
+} else {
+    echo "Falha ao carregar/mover o arquivo para o diretório temporário.";
+}
 
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
