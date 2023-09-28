@@ -1,7 +1,7 @@
 <?php
 function conectarDB() {
-  $servidor = getenv('DATABASE');
-  $usuario = getenv('HOST');
+  $servidor = getenv('HOST');
+  $usuario = getenv('USER');
   $senha = getenv('PASS');
   $bd = getenv('DATABASE');
   $port = getenv('PORT');
