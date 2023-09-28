@@ -29,21 +29,29 @@ if ($img["error"] == 4) {
        location.href='cadastro.php';
     </script>";
 } else {
-    // Diretório de destino
-    $diretorio_destino = "img/";
-
-    // Verifique se o diretório de destino existe ou crie-o
-    if (!is_dir($diretorio_destino)) {
-        if (!mkdir($diretorio_destino, 0777, true)) {
-            die("Falha ao criar o diretório de destino.");
-        }
-    }
-    
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
-    
-    $path = $diretorio_destino . $nameFile;
-    $upar = move_uploaded_file($img["tmp_name"], $path);
+
+    $temp_dir = "/app/temp/";
+
+    $temp_path = $temp_dir . $nameFile;
+
+    if (move_uploaded_file($img["tmp_name"], $temp_path)) {
+        // Arquivo movido para o diretório temporário com sucesso
+
+        // Agora, mova o arquivo para o diretório final
+        $final_dir = "/app/server/img/";
+        $final_path = $final_dir . $nameFile;
+
+        if (rename($temp_path, $final_path)) {
+            // Arquivo movido para o diretório final com sucesso
+            echo "O arquivo foi carregado e movido com sucesso para $final_path.";
+        } else {
+            echo "Falha ao mover o arquivo para o diretório final.";
+        }
+    } else {
+        echo "Falha ao carregar/mover o arquivo para o diretório temporário.";
+    }
 
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
