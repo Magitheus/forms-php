@@ -11,7 +11,7 @@ $executar = mysqli_query($conexao, $query);
 $dados = mysqli_fetch_array($executar);
 $temp_atual = sys_get_temp_dir();
 
-echo "<p><img src='$temp_atual/$dados[foto]'></p>";
+// echo "<p><img src='$temp_atual/$dados[foto]'></p>";
 echo "<p>Nome: $dados[nome]</p>";
 echo "<p>Data Nascimento$dados[data_nascimento]</p>";
 echo "<p>Email: $dados[email]</p>";

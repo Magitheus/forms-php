@@ -21,7 +21,7 @@ if ($delete and $executar) {
         echo "
                 <script>
                    alert('Conta " . $executar ." e foto deletada. " . $delete ."');
-                   location.href='lista-usuario.php';
+                   location.href='../lista-usuario.php';
                 </script>";
 }
 ?>
