@@ -17,7 +17,7 @@ while ($dados = mysqli_fetch_array($executar)) {
     echo "
     <tr>
         <td>$dados[1]</td>
-        <td><a href='detalhes.php?id=$dados[id_usuario]'><img src='magnifying-glass.svg'></a></td>
+        <td><a href='detalhes.php?id=$dados[id_usuario]'><img src='./assets/magnifying-glass.svg'></a></td>
     </tr>";
 }
 ?>
