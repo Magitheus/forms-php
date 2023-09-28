@@ -31,10 +31,29 @@ if ($img["error"] == 4) {
 } else {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
+    $destino = "/img/";
     $temp_atual = sys_get_temp_dir();
-    $path = $temp_atual . "/" . $nameFile;
+    
+    $path_temp = $temp_atual . "/" . $nameFile;
+    $path_destino = $destino . $nameFile;
 
-$upar = move_uploaded_file($img["tmp_name"], $path);
+
+if (move_uploaded_file($img["tmp_name"], $path_temp)) {
+    // Arquivo movido com sucesso
+    echo "O arquivo foi movido para a pasta temporária.";
+
+    // Agora, mova o arquivo da pasta temporária para a pasta de destino
+    if (rename($path_temp, $path_destino)) {
+        // Arquivo movido com sucesso para a pasta de destino
+        echo "O arquivo foi movido para a pasta de destino.";
+    } else {
+        // Falha ao mover o arquivo para a pasta de destino
+        echo "Falha ao mover o arquivo para a pasta de destino.";
+    }
+} else {
+    // Falha ao mover o arquivo para a pasta temporária
+    echo "Falha ao mover o arquivo para a pasta temporária.";
+}
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
     
