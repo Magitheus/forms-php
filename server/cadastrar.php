@@ -34,15 +34,16 @@ if ($img["error"] == 4) {
     $temp_atual = sys_get_temp_dir();
     $path = $temp_atual . "/" . $nameFile;
 
-    $upar = move_uploaded_file($img["tmp_name"], $path);
+$upar = move_uploaded_file($img["tmp_name"], $path);
    
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
     
     $resultado = mysqli_query($conexao, $query);
     if ($upar && $resultado) {
+        echo $path;
         echo "
         <script>
-           alert('Foto upada caminho: ' . $path . ');
+           alert('Foto upada');
            location.href='index.php';
         </script>";
     }
