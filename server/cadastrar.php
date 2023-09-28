@@ -40,11 +40,10 @@ $upar = move_uploaded_file($img["tmp_name"], $path);
     
     $resultado = mysqli_query($conexao, $query);
     if ($upar && $resultado) {
-        echo $path;
         echo "
         <script>
            alert('Foto upada');
-           location.href='../index.php';
+           location.href='../';
         </script>";
     }
 }
