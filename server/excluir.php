@@ -12,8 +12,7 @@ $file = $dados['foto'];
 $query = "DELETE FROM usuario WHERE id_usuario=$id";
 $executar = mysqli_query($conexao, $query);
 
-$raiz_projeto = __DIR__; // Obtém o diretório atual do script PHP (raiz do projeto)
-$path = $raiz_projeto . "/img/" . $File;
+$path = "/app/img/" . $file;
 $delete = unlink($path);
 
 if ($delete and $executar) {
