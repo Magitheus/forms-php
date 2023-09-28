@@ -10,17 +10,17 @@ function conectarDB() {
       die("As informações de conexão não foram configuradas corretamente.");
   }
 
-  $cnx = mysqli_connect("$servidor", "$usuario", "$senha", "$bd", "$port");
+  $cnx = mysqli_connect($servidor, $usuario, $senha, $bd, $port);
   return $cnx;
 }
 
-$conexao = conectarDB();
 
 if ($conexao) {
   error_log ("Conectado");
 } else {
   error_log ("Não conectado");
 }
+$conexao = conectarDB();
 // $HOST = getenv('HOST') ?? 'localhost';
 // $USER = getenv('USER') ?? 'root';
 // $DATABASE = getenv('DATABASE') ?? 'revista';
