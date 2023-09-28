@@ -29,10 +29,20 @@ if ($img["error"] == 4) {
        location.href='cadastro.php';
     </script>";
 } else {
+    // Diretório de destino
+    $diretorio_destino = "img/";
+
+    // Verifique se o diretório de destino existe ou crie-o
+    if (!is_dir($diretorio_destino)) {
+        if (!mkdir($diretorio_destino, 0777, true)) {
+            die("Falha ao criar o diretório de destino.");
+        }
+    }
+    
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
-
-    $path = "img/" . $nameFile;
+    
+    $path = $diretorio_destino . $nameFile;
     $upar = move_uploaded_file($img["tmp_name"], $path);
 
    
