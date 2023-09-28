@@ -1,5 +1,5 @@
 <?php
-require_once "conexao.php";
+require_once "./server/conexao.php";
 
 $query = "SELECT id_usuario, nome FROM usuario ORDER BY nome ASC";
 $executar = mysqli_query($conexao, $query);

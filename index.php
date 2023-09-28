@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <form action="cadastrar.php" method="post" enctype="multipart/form-data">
+    <form action="./server/cadastrar.php" method="post" enctype="multipart/form-data">
         <label for="nome">
             Nome: <input id="nome" type="text" name="nome"/>
         </label>
