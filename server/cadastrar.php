@@ -165,8 +165,10 @@ if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD)
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
     $path = "../img/" . $nameFile;
-    $upar = move_uploaded_file($img["tmp_name"], $path);
-    echo $nome . $dn . $email . $pass . $nameFile;
+    //$upar = move_uploaded_file($img["tmp_name"], $path);
+    $imagemTemp = $img["tmp_name"];
+    $imagemBase64 = base64_encode(file_get_contents($imagemTemp));
+    $upar = file_put_contents($path, $imagemBase64);
 
     $dn = date("Y-m-d", strtotime(str_replace("-", "/", $dn)));
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
