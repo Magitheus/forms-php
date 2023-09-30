@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `senha` char(40) NOT NULL,
   `foto` varchar(37) DEFAULT NULL,
   `tipo_usuario` tinyint(4) NOT NULL DEFAULT '3' COMMENT '1 - ADM; 2 - jornalista; 3 - usuario comum',
-  `bloqueado` int(11) NOT NULL DEFAULT '0' COMMENT '0 - livre; 1 - bloequeado',
+  `bloqueado` int(11) NOT NULL DEFAULT '0' COMMENT '0 - livre; 1 - bloqueado',
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
