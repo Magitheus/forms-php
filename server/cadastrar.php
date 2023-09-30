@@ -172,19 +172,12 @@ if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD)
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
 
     $resultado = mysqli_query($conexao, $query);
-
-    if ($resultado) {
-        echo 'sucesso';
-    } else {
-        // Houve um erro na consulta
-        echo "Erro na consulta: " . mysqli_error($conexao);
-    }
     if ($upar && $resultado) {
         $_SESSION['reset'] = true;
         echo "
         <script>
            alert('Foto upada');
-           location.href='../index.php';
+           location.href='../lista-usuario.php';
         </script>";
         exit;
     }
