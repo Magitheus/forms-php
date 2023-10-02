@@ -2,7 +2,7 @@
 $HOST = getenv('MYSQLHOST') !== false ? getenv('MYSQLHOST') : 'localhost';
 $USER = getenv('MYSQLUSER') !== false ? getenv('MYSQLUSER') : 'root';
 $DATABASE = getenv('MYSQLDATABASE') !== false ? getenv('MYSQLDATABASE') : 'revista';
-$PASS = getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : '1234';
+$PASS = getenv('MYSQLPASSWORD') !== false ? getenv('MYSQLPASSWORD') : 'usbw';
 $PORT = getenv('MYSQLPORT') !== false ? getenv('MYSQLPORT') : 3306;
 
 

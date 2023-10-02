@@ -5,11 +5,6 @@ $errorsD = $_SESSION['errorsD'] ?? '';
 $errorsE = $_SESSION['errorsE'] ?? '';
 $errorsS = $_SESSION['errorsS'] ?? '';
 $errorsF = $_SESSION['errorsF'] ?? '';
-$reset = false;
-if ($reset) {
-    unset($_SESSION['errorN']);
-    unset($_SESSION['errorE']);
-}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -88,6 +83,11 @@ if ($reset) {
             ?>
         </label>
         <button type="submit">Enviar</button>
+        <?php
+            if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD) || !empty($errorsN)) {
+            echo "<p>Seus dados não foram cadastro por causa de alguns erros</p>";
+            }
+        ?>
     </form>
 </body>
 

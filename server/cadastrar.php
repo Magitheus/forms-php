@@ -150,32 +150,30 @@ $_SESSION['errorsS'] = $errorsS;
 $_SESSION['errorsF'] = $errorsF;
 
 
-// recupera os dados
-if (empty($errorsN)) {
-    $_SESSION['errorN'] = $_POST['nome'];
-}
 
-if (empty($errorsE)) {
-    $_SESSION['errorE'] = $_POST['email'];
-}
 
 if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD) || !empty($errorsN)) {
+    // recupera os dados
+    if (empty($errorsN)) {
+        $_SESSION['errorN'] = $_POST['nome'];
+    }
+
+    if (empty($errorsE)) {
+        $_SESSION['errorE'] = $_POST['email'];
+    }
     header("Location: ../index.php");
 } else {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
     $path = "../img/" . $nameFile;
-    //$upar = move_uploaded_file($img["tmp_name"], $path);
-    $imagemTemp = $img["tmp_name"];
-    $imagemBase64 = base64_encode(file_get_contents($imagemTemp));
-    $upar = file_put_contents($path, $imagemBase64);
+    $upar = move_uploaded_file($img["tmp_name"], $path);
 
     $dn = date("Y-m-d", strtotime(str_replace("-", "/", $dn)));
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
 
     $resultado = mysqli_query($conexao, $query);
     if ($upar && $resultado) {
-        $_SESSION['reset'] = true;
+        session_destroy();
         echo "
         <script>
            alert('Foto upada');
