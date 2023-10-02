@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "./server/conexao.php";
 
 $query = "SELECT id_usuario, nome FROM usuario ORDER BY nome ASC";
@@ -22,6 +23,6 @@ while ($dados = mysqli_fetch_array($executar)) {
         <td><a href='detalhes.php?id=$dados[id_usuario]'><img src='./assets/magnifying-glass.svg'></a></td>
     </tr>";
 }
-session_start();
+
 $_SESSION['ids'] = $ids;
 ?>
