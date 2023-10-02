@@ -2,7 +2,7 @@
 require_once "./server/conexao.php";
 
 session_start();
-$id = $_GET['id'];
+$id = $_GET['id'] ?? "";
 $ids = $_SESSION['ids'];
 
 if (!in_array($id, $ids)) {
