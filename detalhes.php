@@ -18,7 +18,7 @@ $dn = date("d-m-Y", strtotime($dados['data_nascimento']));
 
 $caminhoCompleto = "./img/" . $dados['foto'];
 $imagemBase64 = file_get_contents($caminhoCompleto);
-$extensao = pathinfo($nomeArquivo, PATHINFO_EXTENSION);
+$extensao = pathinfo($dados['foto'], PATHINFO_EXTENSION);
 echo "<p><img src='data:image/" . $extensao . ";base64," . $imagemBase64 . "' alt='imagem'></p>";
 // echo "<p><img src='./img/$dados[foto]'></p>";
 echo "<p>Nome: $dados[nome]</p>";
