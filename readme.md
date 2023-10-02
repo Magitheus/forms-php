@@ -1,16 +1,16 @@
 ## Front-End
 
 ### Tela - Cadastro
-- Cria um navigation. (Cadastro | Lista de usuário)
-- estilizar o formulário.
-- encontra uma forma de retorna o erro sem o ``alert``. 
+- Cria um navigation. (Cadastro | Lista de usuário) V
+- estilizar o formulário. V
+- encontra uma forma de retorna o erro sem o ``alert``.
 
 ### Tela - Lista Usuários
-- estiliza a listagem sem table.
+- estiliza a listagem sem table. V
 
 ### Tela - Detalhes
-- Mostra os dados de forma estilizada.
-- Ter dois botões EXCLUIR e VOLTAR (para lista de usuários).
+- Mostra os dados de forma estilizada. V
+- Ter dois botões EXCLUIR e VOLTAR (para lista de usuários). V
 
 ## Back-End
 

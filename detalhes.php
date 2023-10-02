@@ -1,19 +1,28 @@
-<?php 
+<?php
 require_once "./server/conexao.php";
 
-// esse usurario está no banco de dados?
-// usurario nao existe
+session_start();
 $id = $_GET['id'];
+$ids = $_SESSION['ids'];
+
+if (!in_array($id, $ids)) {
+    header('Location: ./404.php');
+    exit;
+}
 
 $query = "SELECT * FROM usuario WHERE id_usuario=$id";
 
 $executar = mysqli_query($conexao, $query);
 $dados = mysqli_fetch_array($executar);
+$dn = date("d-m-Y", strtotime($dados['data_nascimento']));
 
-// $temp_atual = sys_get_temp_dir();
-// echo "<p><img src='$temp_atual/$dados[foto]'></p>";
+$caminhoCompleto = "./img/" . $dados['foto'];
+$imagemBase64 = file_get_contents($caminhoCompleto);
+$extensao = pathinfo($dados['foto'], PATHINFO_EXTENSION);
+echo "<p><img src='data:image/" . $extensao . ";base64," . $imagemBase64 . "' alt='imagem'></p>";
+// echo "<p><img src='./img/$dados[foto]'></p>";
 echo "<p>Nome: $dados[nome]</p>";
-echo "<p>Data Nascimento$dados[data_nascimento]</p>";
+echo "<p>Data Nascimento: $dn</p>";
 echo "<p>Email: $dados[email]</p>";
 echo "<p>Id: $dados[id_usuario]</p>";
 echo "<p><a href=
