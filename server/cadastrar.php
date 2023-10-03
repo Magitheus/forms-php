@@ -149,9 +149,6 @@ $_SESSION['errorsE'] = $errorsE;
 $_SESSION['errorsS'] = $errorsS;
 $_SESSION['errorsF'] = $errorsF;
 
-
-
-
 if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD) || !empty($errorsN)) {
     // recupera os dados
     if (empty($errorsN)) {
@@ -165,8 +162,16 @@ if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD)
 } else {
     $ext = explode(".", $img["name"]);
     $nameFile = md5(uniqid(time())) . "." . $ext[1];
-    $path = "../img/" . $nameFile;
+
+    $imgFolderPath = "../img/";
+    if (!is_dir($imgFolderPath)) {
+        mkdir($imgFolderPath, 0755, true);
+    }
+    chmod($imgFolderPath, 0755);
+
+    $path = $imgFolderPath . $nameFile;
     $upar = move_uploaded_file($img["tmp_name"], $path);
+    print_r("teste: " . $imgFolderPath);
 
     $dn = date("Y-m-d", strtotime(str_replace("-", "/", $dn)));
     $query = "INSERT INTO usuario(nome, data_nascimento, email, senha, foto) VALUES ('$nome', '$dn', '$email', '$pass', '$nameFile')";
