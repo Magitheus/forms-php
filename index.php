@@ -19,10 +19,17 @@ $errorsF = $_SESSION['errorsF'] ?? '';
       href="estilocadastro.css"
       media="screen"
     />
+    <link rel="stylesheet" href="estilonav.css">
     <title>Cadastro</title>
 </head>
 
 <body>
+<nav class="navbar">
+        <ul>
+            <li><a href="./lista-usuario.php">Lista</a></li>
+            <li><a href="./index.php">Cadastro</a></li>
+        </ul>
+    </nav>
 <div class="login-box">
     <form action="./server/cadastrar.php" method="post" enctype="multipart/form-data">
         <div class="user-box">

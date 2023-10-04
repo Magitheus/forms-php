@@ -4,6 +4,13 @@ require_once "./server/conexao.php";
 ?>
 <html>
   <link rel="stylesheet" type="text/css" href="estilo-lista.css">
+  <link rel="stylesheet" href="estilonav.css">
+  <nav class="navbar">
+        <ul>
+            <li><a href="./lista-usuario.php">Lista</a></li>
+            <li><a href="./index.php">Cadastro</a></li>
+        </ul>
+    </nav>
 </html>
 <?php
 
