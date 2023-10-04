@@ -1,0 +1,32 @@
+.container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    width: 600px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(24, 20, 20, 0.987);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+}
+
+h1{
+    color: rgb(255, 255, 255);
+}
+
+/* Estilos para a lista não ordenada */
+.lista-estilizada {
+    list-style: none; /* Remove marcadores de lista padrão */
+    padding: 0; /* Remove espaçamento interno */
+}
+
+/* Estilos para os itens da lista */
+.lista-estilizada li {
+    background-color: rgb(255, 255, 255); /* Cor de fundo vermelha para os itens */
+    margin-bottom: 10px; /* Espaçamento entre os itens */
+    padding: 10px; /* Espaçamento interno nos itens */
+    border: 1px solid rgb(100, 100, 100); /* Borda branca ao redor dos itens */
+    border-radius: 5px; /* Cantos arredondados */
+    font-size: 16px; /* Tamanho da fonte */
+    color: rgb(0, 0, 0); /* Cor do texto branco para os itens */
+}

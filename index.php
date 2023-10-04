@@ -13,82 +13,84 @@ $errorsF = $_SESSION['errorsF'] ?? '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="estilocadastro.css"
+      media="screen"
+    />
     <title>Cadastro</title>
-    <style>
-        form {
-            width: 300px;
-            display: flex;
-            flex-direction: column;
-        }
-    </style>
 </head>
 
 <body>
+<div class="login-box">
     <form action="./server/cadastrar.php" method="post" enctype="multipart/form-data">
-        <label for="nome">
-            Nome: <input id="nome" value="<?php if (isset($_SESSION['errorN'])) {
-                                                echo $_SESSION['errorN'];
-                                            } ?>" type="text" name="nome" />
-            <?php
-            if (!empty($errorsN)) {
-                echo "<p>Por favor, corrija os seguintes erros:</p>";
-                echo "<ul>";
-                foreach ($errorsN as $error) {
-                    echo "<li>$error</li>";
+        <div class="user-box">
+            <input require="" id="nome" value="<?php if (isset($_SESSION['errorN'])){
+                echo $_SESSION['errorN'];
+            } ?>" type="text" name="nome" />
+            <label for="nome">Nome:</label>
+                <?php
+                if (!empty($errorsN)) {
+                    echo "<p>Por favor, corrija os seguintes erros:</p>";
+                    foreach ($errorsN as $error) {
+                        echo "<p>$error</p>";
+                    }
                 }
-                echo "</ul>";
-            }
-            ?>
-        </label>
-        <label for="dn">
-            Data de nascimento: <input id="dn" type="date" name="dn" />
+                ?>
+        </div>
+
+        <label for="dn">Data de nascimento:</label>
+        <div class="user-box">
+            <input id="dn" type="date" name="dn" require=""/>
             <?php
             if (!empty($errorsD)) {
                 echo "<p>Por favor, corrija os seguintes erros:</p>";
-                echo "<ul>";
                 foreach ($errorsD as $error) {
-                    echo "<li>$error</li>";
+                    echo "<p>$error</p>";
                 }
-                echo "</ul>";
             }
             ?>
-        </label>
-        <label for="email">
-            E-mail: <input id="email" value="<?php echo $_SESSION['errorE'] ?? ''; ?> " type="email" name="email" />
-            <?php
-            if (!empty($errorsE)) {
-                echo "<p>Por favor, corrija os seguintes erros:</p>";
-                echo "<ul>";
-                foreach ($errorsE as $error) {
-                    echo "<li>$error</li>";
+        </div>
+
+        <div class="user-box">
+            <input id="email" value="<?php echo $_SESSION['errorE'] ?? ''; ?> " type="email" name="email" require=""/>
+            <label for="email">E-mail:</label>
+                <?php
+                if (!empty($errorsE)) {
+                    echo "<p>Por favor, corrija os seguintes erros:</p>";
+                    foreach ($errorsE as $error) {
+                        echo "<p>$error</p>";
+                    }
                 }
-                echo "</ul>";
-            }
-            ?>
-        </label>
-        <label for="pass">
-            Senha: <input id="pass" type="password" name="pass" />
-        </label>
-        <label for="foto">
-            Foto: <input id="foto" type="file" name="foto" accept="image/png, image/jpeg, image/jpg" />
+                ?>
+        </div>
+        <div class="user-box">    
+            <input id="pass" type="password" name="pass" require=""/>
+            <label for="pass">Senha: </label>
+        </div>
+        
+        <label for="foto">Foto:</label>
+        <div class="user-box">
+            <input id="foto" type="file" name="foto" accept="image/png, image/jpeg, image/jpg" />
             <?php
             if (!empty($errorsF)) {
                 echo "<p>Por favor, corrija os seguintes erros:</p>";
-                echo "<ul>";
                 foreach ($errorsF as $error) {
-                    echo "<li>$error</li>";
+                    echo "<p>$error</p>";
                 }
-                echo "</ul>";
             }
             ?>
-        </label>
-        <button type="submit">Enviar</button>
+        </div>
+      
+        <center><button type="submit">Enviar<span></span></button></center>
         <?php
             if (!empty($errorsF) || !empty($errorsS) || !empty($errorsE) || !empty($errorsD) || !empty($errorsN)) {
             echo "<p>Seus dados não foram cadastro por causa de alguns erros</p>";
             }
         ?>
     </form>
+</div>
 </body>
 
 </html>
